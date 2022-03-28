@@ -45,26 +45,32 @@ let airportData = "https://raw.githubusercontent.com/kritika2604/Mapping_Earthqu
 d3.json(airportData).then(function(data) {
     console.log(data);
   // Creating a GeoJSON layer with the retrieved data.
-  L.geoJSON(data).addTo(map);
+  L.geoJSON(data, {
+    onEachFeature: function (feature, layer) {
+      console.log(layer);
+      layer.bindPopup('<h2> Airport code:'+ feature.properties.faa +'</h2><hr><p> Airport Name: '+ feature.properties.name +'</p>');
+  }
+    
+}).addTo(map);
 });
 
 // --------------------------------------------------------------------------------
 // Perform a GET request to the query URL
-d3.json(queryUrl, function(data) {
+// d3.json(queryUrl, function(data) {
   
-    // 1. Send the data.features object to the createFeatures function 
-    createFeatures(data.features);
-  });
+//     // 1. Send the data.features object to the createFeatures function 
+//     createFeatures(data.features);
+//   });
   
-  //  2. Create the createFeatures function to hold the data.features object
-  function createFeatures(earthquakeData) {
+//   //  2. Create the createFeatures function to hold the data.features object
+//   function createFeatures(earthquakeData) {
   
-    // 3. Define a function we want to run once for each feature in the features array
-    // 4. Give each feature a popup describing the place and time of the earthquake
-    function onEachFeature(feature, layer) {
-      layer.bindPopup("<h3>" + feature.properties.place +
-        "</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
-    }
+//     // 3. Define a function we want to run once for each feature in the features array
+//     // 4. Give each feature a popup describing the place and time of the earthquake
+//     function onEachFeature(feature, layer) {
+//       layer.bindPopup("<h3>" + feature.properties.place +
+//         "</h3><hr><p>" +  + "</p>");
+//     };
 
 ///---------------------------------------------------------------------------------
 
@@ -175,9 +181,3 @@ console.log("hey");
 //     color: "black",
 //     fillColor: '#ffffa1',
 // }).addTo(map);
-
-
-
-
-
-

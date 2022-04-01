@@ -14,8 +14,8 @@ Tectonic Plate GeoJSON: https://raw.githubusercontent.com/fraxen/tectonicplates/
 
 ### Applications/softwares used: 
 
-Javascript, D3 and leaflet library and plot the data
-on mapbox app thorugh an API request
+- Javascript, D3 and leaflet library and 
+- Data plot on mapbox app thorugh an API request
 
 
 ## Results:
